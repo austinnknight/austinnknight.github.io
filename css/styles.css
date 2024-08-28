@@ -1,0 +1,133 @@
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,300,900,700,500);
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+  padding:0;
+  margin: 0;
+	color: #fff;
+	font-family: "Montserrat", sans-serif;
+}
+body,body *{
+  backface-visibility: hidden;
+}
+
+
+.disable{
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+
+
+/*Selection*/
+::selection {
+  background: #10e88a; /* WebKit/Blink Browsers */
+  color:#ffffff;
+}
+::-moz-selection {
+  background: #10e88a; /* Gecko Browsers */
+  color:#ffffff;
+}
+
+.socilas{
+  position: fixed;
+  bottom:50px;
+  left:50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  user-select: none;
+}
+
+.socilas a{
+  display: inline-block;
+  user-select: none;
+  margin-right: 10px;
+}
+
+.socilas a:last-child{
+  margin-right: 0;
+}
+
+.socilas a img{
+  width: 30px;
+  user-select: none;
+}
+
+
+
+canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  cursor: pointer;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:1;
+}
+
+
+h1 {
+	font-size: 23px;
+	font-weight: 900;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate3d(-50%,-50%,0);
+  white-space:nowrap;
+  z-index:2;
+}
+span{
+  display:inline-block;
+  letter-spacing:15px;
+}
+span:last-child{
+  letter-spacing:0 !important;
+}
+span:nth-child(1),span:nth-child(3),span:nth-child(5)
+,span:nth-child(7),span:nth-child(9),span:nth-child(11),span:nth-child(13){
+  animation:MoveUp 3s ease infinite;
+}
+span:nth-child(2),span:nth-child(4),span:nth-child(6),span:nth-child(8),span:nth-child(10),span:nth-child(12),span:nth-child(14){
+  animation:MoveDown 3s ease infinite;
+}
+
+
+@keyframes MoveUp{
+  0%{
+    transform:translateY(-10px);
+  }
+  50%{
+    transform:translateY(10px);
+  }
+  100%{
+    transform:translateY(-10px);
+  }
+}
+@keyframes MoveDown{
+  0%{
+    transform:translateY(10px);
+  }
+  50%{
+    transform:translateY(-10px);
+  }
+  100%{
+    transform:translateY(10px);
+  }
+}
+
+@media ( max-width: 768px ){
+  h1 {
+  	font-size: 15px;
+  }
+  span{
+    letter-spacing:5px;
+  }
+}
