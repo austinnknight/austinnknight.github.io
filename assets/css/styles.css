@@ -137,7 +137,7 @@ span:nth-child(2),span:nth-child(4),span:nth-child(6),span:nth-child(8),span:nth
   text-align: center;
   margin-bottom: 30px;
   font-family: 'Work Sans', sans-serif; /* Ensure font matches site */
-  font-weight: 900; /* Bold */
+  font-weight: 800; /* Bold */
   letter-spacing: 3px; /* Adjust spacing to match NEXTDY text */
   text-transform: uppercase; /* Capitalize all letters */
   font-size: 24px; /* Increase size if needed */
