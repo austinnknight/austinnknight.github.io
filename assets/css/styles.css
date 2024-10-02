@@ -1,40 +1,49 @@
+@font-face {
+  font-family: 'GT Alpina Typewriter';
+  src: url('assets/font/GT-Alpina-Typewriter-Light-Trial.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: -5px;
+}
 
-@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700;900&display=swap);
+@font-face {
+  font-family: 'Suisse Intl';
+  src: url('assets/font/SuisseIntl-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-overflow-scrolling: touch;
-  padding:0;
-  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 	color: #000000;
-	font-family: 'Work Sans', sans-serif;
+	font-family: 'Suisse Intl', sans-serif;
 }
 
-body,body *{
-  backface-visibility: hidden;
+#title h1{
+  font-family: 'GT Alpina Typewriter', serif;
+	font-size: 70px;
+	font-weight: 1100;
+  position:absolute;
+  top:40%;
+  left:50%;
+  transform:translate3d(-50%,-50%,0);
+  letter-spacing: -5px;
+  white-space:nowrap;
+  z-index:2;
 }
 
-.disable{
-  user-drag: none;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-drag: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
+#title h2{
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 15px;
+  position:absolute;
+  left:40%;
+  top:49%;
 }
 
-/*Selection*/
-::selection {
-  background: #10e88a; /* WebKit/Blink Browsers */
-  color:#ffffff;
-}
-::-moz-selection {
-  background: #10e88a; /* Gecko Browsers */
-  color:#ffffff;
-}
-
-.socilas{
+#signup{
   position: fixed;
   bottom:50px;
   left:50%;
@@ -43,104 +52,8 @@ body,body *{
   user-select: none;
 }
 
-.socilas a{
-  display: inline-block;
-  user-select: none;
-  margin-right: 10px;
-}
-
-.socilas a:last-child{
-  margin-right: 0;
-}
-
-.socilas a img{
-  width: 30px;
-  user-select: none;
-}
-
-canvas {
-  display: block;
-  width: 100vw;
-  height: 100vh;
-  cursor: pointer;
-  position:absolute;
-  top:0;
-  left:0;
-  z-index:1;
-}
-
-h1 {
-	font-size: 23px;
-	font-weight: 900;
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate3d(-50%,-50%,0);
-  white-space:nowrap;
-  z-index:2;
-}
-span{
-  display:inline-block;
-  letter-spacing:15px;
-}
-span:last-child{
-  letter-spacing:0 !important;
-}
-
-span:nth-child(1),span:nth-child(3),span:nth-child(5)
-,span:nth-child(7),span:nth-child(9),span:nth-child(11),span:nth-child(13){
-  animation:MoveUp 3s ease infinite;
-}
-
-span:nth-child(2),span:nth-child(4),span:nth-child(6),span:nth-child(8),span:nth-child(10),span:nth-child(12),span:nth-child(14){
-  animation:MoveDown 3s ease infinite;
-}
-
-@keyframes MoveUp{
-  0%{
-    transform:translateY(-10px);
-  }
-  50%{
-    transform:translateY(10px);
-  }
-  100%{
-    transform:translateY(-10px);
-  }
-}
-@keyframes MoveDown{
-  0%{
-    transform:translateY(10px);
-  }
-  50%{
-    transform:translateY(-10px);
-  }
-  100%{
-    transform:translateY(10px);
-  }
-}
-
-@media ( max-width: 768px ){
-  h1 {
-  	font-size: 15px;
-  }
-  span{
-    letter-spacing:5px;
-  }
-}
-
-/* Styles for the Email Sign-Up Form */
-#signup {
-  padding: 60px 0;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-family: 'Work Sans', sans-serif; /* Ensure font matches site */
-  font-weight: 800; /* Bold */
-  letter-spacing: 3px; /* Adjust spacing to match NEXTDY text */
-  text-transform: uppercase; /* Capitalize all letters */
-  font-size: 15px; /* Increase size if needed */
+#signup-form .form-group {
+  margin-bottom: 10px;
 }
 
 #signup-form {
@@ -148,87 +61,50 @@ h2 {
   margin: 0 auto;
 }
 
-#signup-form .form-group {
+#signup h2{
+  text-align: center;
   margin-bottom: 15px;
-}
-
-#signup-form label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+  font-weight: 800;
+  font-size: 18px;
 }
 
 #signup-form input[type="email"] {
   width: 100%;
-  padding: 12px; /* Increase padding for a bigger input */
+  padding: 12px;
   box-sizing: border-box;
   font-family: 'Work Sans', sans-serif;
-  font-weight: 400; /* Use regular weight for input text */
-  font-size: 16px; /* Adjust font size */
-  border: 1px solid #ccc; /* Softer border */
-  border-radius: 20px; /* Make rounded like the button */
-  color: #333; /* Dark text color */
-  margin-bottom: 15px; /* Add space below input */
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-bottom: 10px;
 }
 
 #signup-form input[type="email"]:focus {
-  outline: none; /* Remove default outline */
-  border-color: #007acc; /* Highlight border on focus */
-  box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5); /* Blue focus ring */
+  outline: none;
+  border-color: #63636367;
+  box-shadow: 0px 0px 8px rgba(93, 94, 94, 0.315);
 }
 
 #signup-form input[type="submit"] {
   display: block;
   width: 100%;
   padding: 12px;
-  color: #333; /* Darker text for contrast */
-  border: 1px solid #ccc; /* Soft border */
-  border-radius: 20px; /* Rounded corners */
-  cursor: pointer;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 20px;
   font-size: 16px;
+  font-weight: 600;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 #signup-form input[type="submit"]:hover {
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15); /* Elevate shadow on hover */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 #signup-form input[type="submit"]:focus {
-  outline: none; /* Remove outline */
-  box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5); /* Blue focus ring */
-}
-
-/* Inverted theme */
-/* Inverted Theme */
-body.invert {
-  color: #fff !important; /* White text */
-}
-
-body.invert canvas {
-}
-
-/* Ensure that all main containers are affected by the inversion */
-.container, .main-content, .content-wrapper {
-}
-
-body.invert .container,
-body.invert .main-content,
-body.invert .content-wrapper {
-  background-color: #000 !important; /* Black background in inverted mode */
-}
-
-/* Ensure that text and form inputs are styled properly in both themes */
-#signup-form input[type="email"],
-#signup-form input[type="submit"] {
-  background-color: #fff; /* White background for input */
-  color: #000; /* Black text */
-  border: 1px solid #000;
-}
-
-body.invert #signup-form input[type="email"],
-body.invert #signup-form input[type="submit"] {
-  background-color: #000; /* Black background for input */
-  color: #fff; /* White text */
-  border: 1px solid #fff;
+  outline: none;
+  box-shadow: 0px 0px 8px rgba(142, 142, 143, 0.365);
 }
