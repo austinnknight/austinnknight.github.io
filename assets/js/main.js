@@ -2,12 +2,12 @@ var c = document.getElementById("c");
 var ctx = c.getContext("2d");
 var cH;
 var cW;
-var bgColor = "#3D5A80";
+var bgColor = "#FFFFFF";
 var animations = [];
 var circles = [];
 
 var colorPicker = (function() {
-  var colors = ["#3D5A80","#98C1D9","#EE6C4D","#293241"];
+  var colors = ["#FFFFFF","#000000"];
 
   var index = 0;
   function next() {
@@ -40,33 +40,20 @@ function addClickListeners() {
 }
 
 function handleEvent(e) {
-  if (e.touches) {
-    e.preventDefault();
-    e = e.touches[0];
+  // Prevent effect if clicking within #signup-form
+  if (e.target.closest('#signup-form')) {
+    return; // Exit function early if the event occurs within #signup-form
   }
-  var currentColor = colorPicker.current();
-  var nextColor = colorPicker.next();
+
+  // Set colors for ripple effect based on theme
+  let currentColor = document.body.classList.contains('invert') ? "#ffffff" : "#000000";
+  let nextColor = document.body.classList.contains('invert') ? "#000000" : "#ffffff";
+
   var targetR = calcPageFillRadius(e.pageX, e.pageY);
-  var rippleSize = Math.min(200, cW * 0.4);
+  var rippleSize = Math.max(window.innerWidth, window.innerHeight) * 1.2; // Larger ripple
   var minCoverDuration = 750;
 
-  var pageFill = new Circle({
-    x: e.pageX,
-    y: e.pageY,
-    r: 0,
-    fill: nextColor
-  });
-  var fillAnimation = anime({
-    targets: pageFill,
-    r: targetR,
-    duration: Math.max(targetR / 2, minCoverDuration),
-    easing: "easeOutQuart",
-    complete: function() {
-      bgColor = pageFill.fill;
-      removeAnimation(fillAnimation);
-    }
-  });
-
+  // Create the ripple animation effect
   var ripple = new Circle({
     x: e.pageX,
     y: e.pageY,
@@ -78,31 +65,36 @@ function handleEvent(e) {
     },
     opacity: 1
   });
+
   var rippleAnimation = anime({
     targets: ripple,
     r: rippleSize,
     opacity: 0,
     easing: "easeOutExpo",
-    duration: 900,
+    duration: 1200, // Adjust duration for smooth expansion
     complete: removeAnimation
   });
 
-  var particles = [];
-
-  var particlesAnimation = anime({
-    targets: particles,
-    x: function(particle) {
-      return particle.x + anime.random(rippleSize, -rippleSize);
-    },
-    y: function(particle) {
-      return particle.y + anime.random(rippleSize * 1.15, -rippleSize * 1.15);
-    },
+  // Create the page fill effect
+  var pageFill = new Circle({
+    x: e.pageX,
+    y: e.pageY,
     r: 0,
-    easing: "easeOutExpo",
-    duration: anime.random(1000, 1300),
-    complete: removeAnimation
+    fill: nextColor
   });
-  animations.push(fillAnimation, rippleAnimation, particlesAnimation);
+
+  var fillAnimation = anime({
+    targets: pageFill,
+    r: targetR,
+    duration: Math.max(targetR / 2, minCoverDuration),
+    easing: "easeOutQuart",
+    complete: function() {
+      bgColor = pageFill.fill;
+      removeAnimation(fillAnimation);
+    }
+  });
+
+  animations.push(fillAnimation, rippleAnimation);
 }
 
 function extend(a, b) {
@@ -133,6 +125,7 @@ Circle.prototype.draw = function() {
   }
   ctx.closePath();
   ctx.globalAlpha = 1;
+  console.log("Drawing circle at:", this.x, this.y, "with radius:", this.r); // Debug draw method
 };
 
 var animate = anime({
@@ -159,8 +152,6 @@ var resizeCanvas = function() {
 (function init() {
   resizeCanvas();
   if (window.CP) {
-    // CodePen's loop detection was causin' problems
-    // and I have no idea why, so...
     window.CP.PenTimer.MAX_TIME_IN_LOOP_WO_EXIT = 6000;
   }
   window.addEventListener("resize", resizeCanvas);

@@ -1,0 +1,234 @@
+
+@import url(https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700;900&display=swap);
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+  padding:0;
+  margin: 0;
+	color: #000000;
+	font-family: 'Work Sans', sans-serif;
+}
+
+body,body *{
+  backface-visibility: hidden;
+}
+
+.disable{
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+/*Selection*/
+::selection {
+  background: #10e88a; /* WebKit/Blink Browsers */
+  color:#ffffff;
+}
+::-moz-selection {
+  background: #10e88a; /* Gecko Browsers */
+  color:#ffffff;
+}
+
+.socilas{
+  position: fixed;
+  bottom:50px;
+  left:50%;
+  transform: translateX(-50%);
+  z-index: 99;
+  user-select: none;
+}
+
+.socilas a{
+  display: inline-block;
+  user-select: none;
+  margin-right: 10px;
+}
+
+.socilas a:last-child{
+  margin-right: 0;
+}
+
+.socilas a img{
+  width: 30px;
+  user-select: none;
+}
+
+canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  cursor: pointer;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:1;
+}
+
+h1 {
+	font-size: 23px;
+	font-weight: 900;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate3d(-50%,-50%,0);
+  white-space:nowrap;
+  z-index:2;
+}
+span{
+  display:inline-block;
+  letter-spacing:15px;
+}
+span:last-child{
+  letter-spacing:0 !important;
+}
+
+span:nth-child(1),span:nth-child(3),span:nth-child(5)
+,span:nth-child(7),span:nth-child(9),span:nth-child(11),span:nth-child(13){
+  animation:MoveUp 3s ease infinite;
+}
+
+span:nth-child(2),span:nth-child(4),span:nth-child(6),span:nth-child(8),span:nth-child(10),span:nth-child(12),span:nth-child(14){
+  animation:MoveDown 3s ease infinite;
+}
+
+@keyframes MoveUp{
+  0%{
+    transform:translateY(-10px);
+  }
+  50%{
+    transform:translateY(10px);
+  }
+  100%{
+    transform:translateY(-10px);
+  }
+}
+@keyframes MoveDown{
+  0%{
+    transform:translateY(10px);
+  }
+  50%{
+    transform:translateY(-10px);
+  }
+  100%{
+    transform:translateY(10px);
+  }
+}
+
+@media ( max-width: 768px ){
+  h1 {
+  	font-size: 15px;
+  }
+  span{
+    letter-spacing:5px;
+  }
+}
+
+/* Styles for the Email Sign-Up Form */
+#signup {
+  padding: 60px 0;
+}
+
+#signup h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-family: 'Work Sans', sans-serif; /* Ensure font matches site */
+  font-weight: 900; /* Bold */
+  letter-spacing: 3px; /* Adjust spacing to match NEXTDY text */
+  text-transform: uppercase; /* Capitalize all letters */
+  font-size: 24px; /* Increase size if needed */
+}
+
+#signup-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#signup-form .form-group {
+  margin-bottom: 15px;
+}
+
+#signup-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#signup-form input[type="email"] {
+  width: 100%;
+  padding: 12px; /* Increase padding for a bigger input */
+  box-sizing: border-box;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400; /* Use regular weight for input text */
+  font-size: 16px; /* Adjust font size */
+  border: 1px solid #ccc; /* Softer border */
+  border-radius: 20px; /* Make rounded like the button */
+  color: #333; /* Dark text color */
+  margin-bottom: 15px; /* Add space below input */
+}
+
+#signup-form input[type="email"]:focus {
+  outline: none; /* Remove default outline */
+  border-color: #007acc; /* Highlight border on focus */
+  box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5); /* Blue focus ring */
+}
+
+#signup-form input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  color: #333; /* Darker text for contrast */
+  border: 1px solid #ccc; /* Soft border */
+  border-radius: 20px; /* Rounded corners */
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+#signup-form input[type="submit"]:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15); /* Elevate shadow on hover */
+}
+
+#signup-form input[type="submit"]:focus {
+  outline: none; /* Remove outline */
+  box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.5); /* Blue focus ring */
+}
+
+/* Inverted theme */
+/* Inverted Theme */
+body.invert {
+  color: #fff !important; /* White text */
+}
+
+body.invert canvas {
+}
+
+/* Ensure that all main containers are affected by the inversion */
+.container, .main-content, .content-wrapper {
+}
+
+body.invert .container,
+body.invert .main-content,
+body.invert .content-wrapper {
+  background-color: #000 !important; /* Black background in inverted mode */
+}
+
+/* Ensure that text and form inputs are styled properly in both themes */
+#signup-form input[type="email"],
+#signup-form input[type="submit"] {
+  background-color: #fff; /* White background for input */
+  color: #000; /* Black text */
+  border: 1px solid #000;
+}
+
+body.invert #signup-form input[type="email"],
+body.invert #signup-form input[type="submit"] {
+  background-color: #000; /* Black background for input */
+  color: #fff; /* White text */
+  border: 1px solid #fff;
+}
