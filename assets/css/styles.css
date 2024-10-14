@@ -154,6 +154,9 @@ span:nth-child(2),span:nth-child(4),span:nth-child(6),span:nth-child(8),span:nth
   letter-spacing: 3px; /* Adjust spacing to match NEXTDY text */
   text-transform: uppercase; /* Capitalize all letters */
   font-size: 24px; /* Increase size if needed */
+<<<<<<< HEAD
+>>>>>>> parent of 069467b (Update styles.css)
+=======
 >>>>>>> parent of 069467b (Update styles.css)
 }
 
